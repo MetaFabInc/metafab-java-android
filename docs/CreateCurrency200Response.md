@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **supplyCap** | **Integer** | This field has not had a description added. |  [optional]
 **updatedAt** | **String** | This field has not had a description added. |  [optional]
 **createdAt** | **String** | This field has not had a description added. |  [optional]
-**contract** | [**CreateCurrency200ResponseAllOfContract**](CreateCurrency200ResponseAllOfContract.md) |  |  [optional]
+**contract** | [**CreateCollection200ResponseAllOfContract**](CreateCollection200ResponseAllOfContract.md) |  |  [optional]
 
 
 
