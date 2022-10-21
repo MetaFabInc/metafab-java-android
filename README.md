@@ -145,7 +145,6 @@ Class | Method | HTTP request | Description
  - [CreateCollection200ResponseAllOfContractAllOf](docs/CreateCollection200ResponseAllOfContractAllOf.md)
  - [CreateCollectionItemRequest](docs/CreateCollectionItemRequest.md)
  - [CreateCollectionItemRequestAttributesInner](docs/CreateCollectionItemRequestAttributesInner.md)
- - [CreateCollectionItemRequestAttributesInnerValue](docs/CreateCollectionItemRequestAttributesInnerValue.md)
  - [CreateCollectionRequest](docs/CreateCollectionRequest.md)
  - [CreateContractRequest](docs/CreateContractRequest.md)
  - [CreateCurrency200Response](docs/CreateCurrency200Response.md)
