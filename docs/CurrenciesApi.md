@@ -10,7 +10,10 @@ Method | HTTP request | Description
 [**getCurrencies**](CurrenciesApi.md#getCurrencies) | **GET** /v1/currencies | Get currencies
 [**getCurrencyBalance**](CurrenciesApi.md#getCurrencyBalance) | **GET** /v1/currencies/{currencyId}/balances | Get currency balance
 [**getCurrencyFees**](CurrenciesApi.md#getCurrencyFees) | **GET** /v1/currencies/{currencyId}/fees | Get currency fees
+[**getCurrencyRole**](CurrenciesApi.md#getCurrencyRole) | **GET** /v1/currencies/{currencyId}/roles | Get currency role
+[**grantCurrencyRole**](CurrenciesApi.md#grantCurrencyRole) | **POST** /v1/currencies/{currencyId}/roles | Grant currency role
 [**mintCurrency**](CurrenciesApi.md#mintCurrency) | **POST** /v1/currencies/{currencyId}/mints | Mint currency
+[**revokeCurrencyRole**](CurrenciesApi.md#revokeCurrencyRole) | **DELETE** /v1/currencies/{currencyId}/roles | Revoke currency role
 [**setCurrencyFees**](CurrenciesApi.md#setCurrencyFees) | **POST** /v1/currencies/{currencyId}/fees | Set currency fees
 [**transferCurrency**](CurrenciesApi.md#transferCurrency) | **POST** /v1/currencies/{currencyId}/transfers | Transfer currency
 
@@ -312,6 +315,110 @@ No authorization required
 - **Accept**: application/json
 
 
+## getCurrencyRole
+
+> Boolean getCurrencyRole(currencyId, role, address, walletId)
+
+Get currency role
+
+Returns a boolean (true/false) representing if the provided role for this currency has been granted to the provided address or address associated with the provided walletId.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.CurrenciesApi;
+
+CurrenciesApi apiInstance = new CurrenciesApi();
+String currencyId = null; // String | Any currency id within the MetaFab ecosystem.
+String role = minter; // String | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
+String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
+String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+try {
+    Boolean result = apiInstance.getCurrencyRole(currencyId, role, address, walletId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CurrenciesApi#getCurrencyRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **String**| Any currency id within the MetaFab ecosystem. | [default to null]
+ **role** | **String**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | [default to null]
+ **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+
+### Return type
+
+**Boolean**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## grantCurrencyRole
+
+> TransactionModel grantCurrencyRole(currencyId, xAuthorization, xPassword, grantCurrencyRoleRequest)
+
+Grant currency role
+
+Grants the provided role for the currency to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the currency for specific players, addresses, or contracts to perform different types of permissioned currency operations.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.CurrenciesApi;
+
+CurrenciesApi apiInstance = new CurrenciesApi();
+String currencyId = null; // String | Any currency id within the MetaFab ecosystem.
+String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
+String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+GrantCurrencyRoleRequest grantCurrencyRoleRequest = new GrantCurrencyRoleRequest(); // GrantCurrencyRoleRequest | 
+try {
+    TransactionModel result = apiInstance.grantCurrencyRole(currencyId, xAuthorization, xPassword, grantCurrencyRoleRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CurrenciesApi#grantCurrencyRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **String**| Any currency id within the MetaFab ecosystem. | [default to null]
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
+ **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **grantCurrencyRoleRequest** | [**GrantCurrencyRoleRequest**](GrantCurrencyRoleRequest.md)|  |
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## mintCurrency
 
 > TransactionModel mintCurrency(currencyId, xAuthorization, xPassword, mintCurrencyRequest)
@@ -349,6 +456,58 @@ Name | Type | Description  | Notes
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
  **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **mintCurrencyRequest** | [**MintCurrencyRequest**](MintCurrencyRequest.md)|  |
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## revokeCurrencyRole
+
+> TransactionModel revokeCurrencyRole(currencyId, xAuthorization, xPassword, revokeCollectionRoleRequest)
+
+Revoke currency role
+
+Revokes the provided role for the currency to the provided address or address associated with the provided walletId.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.CurrenciesApi;
+
+CurrenciesApi apiInstance = new CurrenciesApi();
+String currencyId = null; // String | Any currency id within the MetaFab ecosystem.
+String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
+String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+RevokeCollectionRoleRequest revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
+try {
+    TransactionModel result = apiInstance.revokeCurrencyRole(currencyId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CurrenciesApi#revokeCurrencyRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyId** | **String**| Any currency id within the MetaFab ecosystem. | [default to null]
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
+ **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  |
 
 ### Return type
 

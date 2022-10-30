@@ -17,8 +17,11 @@ Method | HTTP request | Description
 [**getCollectionItemSupply**](ItemsApi.md#getCollectionItemSupply) | **GET** /v1/collections/{collectionId}/items/{collectionItemId}/supplies | Get collection item supply
 [**getCollectionItemTimelock**](ItemsApi.md#getCollectionItemTimelock) | **GET** /v1/collections/{collectionId}/items/{collectionItemId}/timelocks | Get collection item timelock
 [**getCollectionItems**](ItemsApi.md#getCollectionItems) | **GET** /v1/collections/{collectionId}/items | Get collection items
+[**getCollectionRole**](ItemsApi.md#getCollectionRole) | **GET** /v1/collections/{collectionId}/roles | Get collection role
 [**getCollections**](ItemsApi.md#getCollections) | **GET** /v1/collections | Get collections
+[**grantCollectionRole**](ItemsApi.md#grantCollectionRole) | **POST** /v1/collections/{collectionId}/roles | Grant collection role
 [**mintCollectionItem**](ItemsApi.md#mintCollectionItem) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/mints | Mint collection item
+[**revokeCollectionRole**](ItemsApi.md#revokeCollectionRole) | **DELETE** /v1/collections/{collectionId}/roles | Revoke collection role
 [**setCollectionApproval**](ItemsApi.md#setCollectionApproval) | **POST** /v1/collections/{collectionId}/approvals | Set collection approval
 [**setCollectionItemTimelock**](ItemsApi.md#setCollectionItemTimelock) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/timelocks | Set collection item timelock
 [**transferCollectionItem**](ItemsApi.md#transferCollectionItem) | **POST** /v1/collections/{collectionId}/items/{collectionItemId}/transfers | Transfer collection item
@@ -239,7 +242,7 @@ No authorization required
 
 Create collection item
 
-Creates a new item type. Item type creation associates all of the relevant item data to a specific itemId. Such as item name, image, description, attributes, any arbitrary data such as 2D or 3D model resolver URLs, and more. It is recommended, but not required, that you create a new item type through this endpoint before minting any quantity of the related itemId.  Item type data is uploaded to, and resolved through IPFS for decentralized persistence. Any itemId provided will have its existing item type overriden if it already exists.
+Creates a new item type. Item type creation associates all of the relevant item data to a specific itemId. Such as item name, image, description, attributes, any arbitrary data such as 2D or 3D model resolver URLs, and more. It is recommended, but not required, that you create a new item type through this endpoint before minting any quantity of the related itemId.  Any itemId provided will have its existing item type overriden if it already exists.  Item type data is uploaded to, and resolved through IPFS for decentralized persistence.
 
 ### Example
 
@@ -287,7 +290,7 @@ No authorization required
 
 ## getCollectionApproval
 
-> BigDecimal getCollectionApproval(collectionId, operatorAddress, address, walletId)
+> Boolean getCollectionApproval(collectionId, operatorAddress, address, walletId)
 
 Get collection approval
 
@@ -305,7 +308,7 @@ String operatorAddress = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String |
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
 String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
 try {
-    BigDecimal result = apiInstance.getCollectionApproval(collectionId, operatorAddress, address, walletId);
+    Boolean result = apiInstance.getCollectionApproval(collectionId, operatorAddress, address, walletId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#getCollectionApproval");
@@ -325,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BigDecimal**](BigDecimal.md)
+**Boolean**
 
 ### Authorization
 
@@ -639,7 +642,7 @@ No authorization required
 
 Get collection items
 
-Returns all collection items as an array of metadata objects.
+Returns all collection items as an array of metadata objects.  Please note that ONLY items that have had at least 1 quantity minted will be returned. If you&#39;ve created an item that has not been minted yet, it will not be returned in the array response.
 
 ### Example
 
@@ -668,6 +671,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 **List&lt;Object&gt;**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getCollectionRole
+
+> Boolean getCollectionRole(collectionId, role, address, walletId)
+
+Get collection role
+
+Returns a boolean (true/false) representing if the provided role for this collection has been granted to the provided address or address associated with the provided walletId.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.ItemsApi;
+
+ItemsApi apiInstance = new ItemsApi();
+String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String role = minter; // String | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
+String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
+String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+try {
+    Boolean result = apiInstance.getCollectionRole(collectionId, role, address, walletId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ItemsApi#getCollectionRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **role** | **String**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | [default to null]
+ **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+
+### Return type
+
+**Boolean**
 
 ### Authorization
 
@@ -725,6 +780,58 @@ No authorization required
 - **Accept**: application/json
 
 
+## grantCollectionRole
+
+> TransactionModel grantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest)
+
+Grant collection role
+
+Grants the provided role for the collection to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the collection for specific players, addresses, or contracts to perform different types of permissioned collection operations.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.ItemsApi;
+
+ItemsApi apiInstance = new ItemsApi();
+String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
+String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+GrantCollectionRoleRequest grantCollectionRoleRequest = new GrantCollectionRoleRequest(); // GrantCollectionRoleRequest | 
+try {
+    TransactionModel result = apiInstance.grantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ItemsApi#grantCollectionRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
+ **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **grantCollectionRoleRequest** | [**GrantCollectionRoleRequest**](GrantCollectionRoleRequest.md)|  |
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## mintCollectionItem
 
 > TransactionModel mintCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, mintCollectionItemRequest)
@@ -764,6 +871,58 @@ Name | Type | Description  | Notes
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
  **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **mintCollectionItemRequest** | [**MintCollectionItemRequest**](MintCollectionItemRequest.md)|  |
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## revokeCollectionRole
+
+> TransactionModel revokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest)
+
+Revoke collection role
+
+Revokes the provided role for the collection to the provided address or address associated with the provided walletId.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.ItemsApi;
+
+ItemsApi apiInstance = new ItemsApi();
+String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
+String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+RevokeCollectionRoleRequest revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
+try {
+    TransactionModel result = apiInstance.revokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ItemsApi#revokeCollectionRole");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
+ **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  |
 
 ### Return type
 
