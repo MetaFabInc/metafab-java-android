@@ -342,7 +342,7 @@ No authorization required
 
 ## getCollectionItem
 
-> List&lt;Object&gt; getCollectionItem(collectionId, collectionItemId)
+> Object getCollectionItem(collectionId, collectionItemId)
 
 Get collection item
 
@@ -358,7 +358,7 @@ ItemsApi apiInstance = new ItemsApi();
 String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 try {
-    List<Object> result = apiInstance.getCollectionItem(collectionId, collectionItemId);
+    Object result = apiInstance.getCollectionItem(collectionId, collectionItemId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#getCollectionItem");
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List&lt;Object&gt;**
+**Object**
 
 ### Authorization
 
