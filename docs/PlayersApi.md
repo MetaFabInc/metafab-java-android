@@ -4,8 +4,10 @@ All URIs are relative to *https://api.trymetafab.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authPlayer**](PlayersApi.md#authPlayer) | **GET** /v1/players | Authenticate player
+[**authPlayer**](PlayersApi.md#authPlayer) | **GET** /v1/players/auth | Authenticate player
 [**createPlayer**](PlayersApi.md#createPlayer) | **POST** /v1/players | Create player
+[**getPlayer**](PlayersApi.md#getPlayer) | **GET** /v1/players/{playerId} | Get player
+[**getPlayers**](PlayersApi.md#getPlayers) | **GET** /v1/players | Get players
 [**updatePlayer**](PlayersApi.md#updatePlayer) | **PATCH** /v1/players/{playerId} | Update player
 
 
@@ -101,6 +103,98 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## getPlayer
+
+> PublicPlayer getPlayer(playerId)
+
+Get player
+
+Returns a player object for the provided player id.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.PlayersApi;
+
+PlayersApi apiInstance = new PlayersApi();
+String playerId = null; // String | Any player id within the MetaFab ecosystem.
+try {
+    PublicPlayer result = apiInstance.getPlayer(playerId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PlayersApi#getPlayer");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+
+### Return type
+
+[**PublicPlayer**](PublicPlayer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getPlayers
+
+> List&lt;PublicPlayer&gt; getPlayers(xAuthorization)
+
+Get players
+
+Returns all players for the authenticated game as an array of player objects.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.PlayersApi;
+
+PlayersApi apiInstance = new PlayersApi();
+String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
+try {
+    List<PublicPlayer> result = apiInstance.getPlayers(xAuthorization);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PlayersApi#getPlayers");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
+
+### Return type
+
+[**List&lt;PublicPlayer&gt;**](PublicPlayer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

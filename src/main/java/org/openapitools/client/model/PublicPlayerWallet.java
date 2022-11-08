@@ -16,7 +16,7 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 @ApiModel(description = "")
-public class WalletModel {
+public class PublicPlayerWallet {
   
   @SerializedName("id")
   private String id = null;
@@ -54,9 +54,9 @@ public class WalletModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WalletModel walletModel = (WalletModel) o;
-    return (this.id == null ? walletModel.id == null : this.id.equals(walletModel.id)) &&
-        (this.address == null ? walletModel.address == null : this.address.equals(walletModel.address));
+    PublicPlayerWallet publicPlayerWallet = (PublicPlayerWallet) o;
+    return (this.id == null ? publicPlayerWallet.id == null : this.id.equals(publicPlayerWallet.id)) &&
+        (this.address == null ? publicPlayerWallet.address == null : this.address.equals(publicPlayerWallet.address));
   }
 
   @Override
@@ -70,7 +70,7 @@ public class WalletModel {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WalletModel {\n");
+    sb.append("class PublicPlayerWallet {\n");
     
     sb.append("  id: ").append(id).append("\n");
     sb.append("  address: ").append(address).append("\n");

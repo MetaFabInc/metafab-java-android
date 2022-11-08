@@ -12,25 +12,27 @@
 
 package org.openapitools.client.model;
 
-import org.openapitools.client.model.CreateCollection200ResponseAllOfContract;
+import org.openapitools.client.model.PublicPlayerWallet;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 @ApiModel(description = "")
-public class CreateExchange200Response {
+public class PublicPlayer {
   
   @SerializedName("id")
   private String id = null;
   @SerializedName("gameId")
   private String gameId = null;
-  @SerializedName("contractId")
-  private String contractId = null;
+  @SerializedName("walletId")
+  private String walletId = null;
+  @SerializedName("username")
+  private String username = null;
   @SerializedName("updatedAt")
   private String updatedAt = null;
   @SerializedName("createdAt")
   private String createdAt = null;
-  @SerializedName("contract")
-  private CreateCollection200ResponseAllOfContract contract = null;
+  @SerializedName("wallet")
+  private PublicPlayerWallet wallet = null;
 
   /**
    * This field has not had a description added.
@@ -58,11 +60,22 @@ public class CreateExchange200Response {
    * This field has not had a description added.
    **/
   @ApiModelProperty(value = "This field has not had a description added.")
-  public String getContractId() {
-    return contractId;
+  public String getWalletId() {
+    return walletId;
   }
-  public void setContractId(String contractId) {
-    this.contractId = contractId;
+  public void setWalletId(String walletId) {
+    this.walletId = walletId;
+  }
+
+  /**
+   * This field has not had a description added.
+   **/
+  @ApiModelProperty(value = "This field has not had a description added.")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   /**
@@ -90,11 +103,11 @@ public class CreateExchange200Response {
   /**
    **/
   @ApiModelProperty(value = "")
-  public CreateCollection200ResponseAllOfContract getContract() {
-    return contract;
+  public PublicPlayerWallet getWallet() {
+    return wallet;
   }
-  public void setContract(CreateCollection200ResponseAllOfContract contract) {
-    this.contract = contract;
+  public void setWallet(PublicPlayerWallet wallet) {
+    this.wallet = wallet;
   }
 
 
@@ -106,13 +119,14 @@ public class CreateExchange200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateExchange200Response createExchange200Response = (CreateExchange200Response) o;
-    return (this.id == null ? createExchange200Response.id == null : this.id.equals(createExchange200Response.id)) &&
-        (this.gameId == null ? createExchange200Response.gameId == null : this.gameId.equals(createExchange200Response.gameId)) &&
-        (this.contractId == null ? createExchange200Response.contractId == null : this.contractId.equals(createExchange200Response.contractId)) &&
-        (this.updatedAt == null ? createExchange200Response.updatedAt == null : this.updatedAt.equals(createExchange200Response.updatedAt)) &&
-        (this.createdAt == null ? createExchange200Response.createdAt == null : this.createdAt.equals(createExchange200Response.createdAt)) &&
-        (this.contract == null ? createExchange200Response.contract == null : this.contract.equals(createExchange200Response.contract));
+    PublicPlayer publicPlayer = (PublicPlayer) o;
+    return (this.id == null ? publicPlayer.id == null : this.id.equals(publicPlayer.id)) &&
+        (this.gameId == null ? publicPlayer.gameId == null : this.gameId.equals(publicPlayer.gameId)) &&
+        (this.walletId == null ? publicPlayer.walletId == null : this.walletId.equals(publicPlayer.walletId)) &&
+        (this.username == null ? publicPlayer.username == null : this.username.equals(publicPlayer.username)) &&
+        (this.updatedAt == null ? publicPlayer.updatedAt == null : this.updatedAt.equals(publicPlayer.updatedAt)) &&
+        (this.createdAt == null ? publicPlayer.createdAt == null : this.createdAt.equals(publicPlayer.createdAt)) &&
+        (this.wallet == null ? publicPlayer.wallet == null : this.wallet.equals(publicPlayer.wallet));
   }
 
   @Override
@@ -120,24 +134,26 @@ public class CreateExchange200Response {
     int result = 17;
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.gameId == null ? 0: this.gameId.hashCode());
-    result = 31 * result + (this.contractId == null ? 0: this.contractId.hashCode());
+    result = 31 * result + (this.walletId == null ? 0: this.walletId.hashCode());
+    result = 31 * result + (this.username == null ? 0: this.username.hashCode());
     result = 31 * result + (this.updatedAt == null ? 0: this.updatedAt.hashCode());
     result = 31 * result + (this.createdAt == null ? 0: this.createdAt.hashCode());
-    result = 31 * result + (this.contract == null ? 0: this.contract.hashCode());
+    result = 31 * result + (this.wallet == null ? 0: this.wallet.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateExchange200Response {\n");
+    sb.append("class PublicPlayer {\n");
     
     sb.append("  id: ").append(id).append("\n");
     sb.append("  gameId: ").append(gameId).append("\n");
-    sb.append("  contractId: ").append(contractId).append("\n");
+    sb.append("  walletId: ").append(walletId).append("\n");
+    sb.append("  username: ").append(username).append("\n");
     sb.append("  updatedAt: ").append(updatedAt).append("\n");
     sb.append("  createdAt: ").append(createdAt).append("\n");
-    sb.append("  contract: ").append(contract).append("\n");
+    sb.append("  wallet: ").append(wallet).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

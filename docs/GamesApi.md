@@ -4,8 +4,9 @@ All URIs are relative to *https://api.trymetafab.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authGame**](GamesApi.md#authGame) | **GET** /v1/games | Authenticate game
+[**authGame**](GamesApi.md#authGame) | **GET** /v1/games/auth | Authenticate game
 [**createGame**](GamesApi.md#createGame) | **POST** /v1/games | Create game
+[**getGame**](GamesApi.md#getGame) | **GET** /v1/games/{gameId} | Get game
 [**updateGame**](GamesApi.md#updateGame) | **PATCH** /v1/games/{gameId} | Update game
 
 
@@ -95,6 +96,52 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## getGame
+
+> PublicGame getGame(gameId)
+
+Get game
+
+Returns a game object for the provided game id.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.GamesApi;
+
+GamesApi apiInstance = new GamesApi();
+String gameId = null; // String | Any game id within the MetaFab ecosystem.
+try {
+    PublicGame result = apiInstance.getGame(gameId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling GamesApi#getGame");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gameId** | **String**| Any game id within the MetaFab ecosystem. | [default to null]
+
+### Return type
+
+[**PublicGame**](PublicGame.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
