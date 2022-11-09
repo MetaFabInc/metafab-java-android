@@ -7,7 +7,9 @@ Method | HTTP request | Description
 [**authPlayer**](PlayersApi.md#authPlayer) | **GET** /v1/players/auth | Authenticate player
 [**createPlayer**](PlayersApi.md#createPlayer) | **POST** /v1/players | Create player
 [**getPlayer**](PlayersApi.md#getPlayer) | **GET** /v1/players/{playerId} | Get player
+[**getPlayerData**](PlayersApi.md#getPlayerData) | **GET** /v1/players/{playerId}/data | Get player data
 [**getPlayers**](PlayersApi.md#getPlayers) | **GET** /v1/players | Get players
+[**setPlayerData**](PlayersApi.md#setPlayerData) | **POST** /v1/players/{playerId}/data | Set player data
 [**updatePlayer**](PlayersApi.md#updatePlayer) | **PATCH** /v1/players/{playerId} | Update player
 
 
@@ -152,6 +154,52 @@ No authorization required
 - **Accept**: application/json
 
 
+## getPlayerData
+
+> GetPlayerData200Response getPlayerData(playerId)
+
+Get player data
+
+Returns the latest public and protected data as an object for the provided playerId.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.PlayersApi;
+
+PlayersApi apiInstance = new PlayersApi();
+String playerId = null; // String | Any player id within the MetaFab ecosystem.
+try {
+    GetPlayerData200Response result = apiInstance.getPlayerData(playerId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PlayersApi#getPlayerData");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+
+### Return type
+
+[**GetPlayerData200Response**](GetPlayerData200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## getPlayers
 
 > List&lt;PublicPlayer&gt; getPlayers(xAuthorization)
@@ -195,6 +243,56 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## setPlayerData
+
+> GetPlayerData200Response setPlayerData(playerId, xAuthorization, setPlayerDataRequest)
+
+Set player data
+
+Creates or updates public and/or protected data for the provided playerId. Data updates are performed using deep merging. This means that when you update any top level or nested properties specific to player public or protected data, you only need to include the properties you are making changes to. Any existing properties not included in request body arguments will be retained on the player data object.  Please note, When writing an array type for a player, arrays do not follow the deep merge approach. If you add or remove an item from an array, the entire array must be passed as an argument when updating the related property for player public or protected data.
+
+### Example
+
+```java
+// Import classes:
+//import org.metafab.client.api.PlayersApi;
+
+PlayersApi apiInstance = new PlayersApi();
+String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
+SetPlayerDataRequest setPlayerDataRequest = new SetPlayerDataRequest(); // SetPlayerDataRequest | 
+try {
+    GetPlayerData200Response result = apiInstance.setPlayerData(playerId, xAuthorization, setPlayerDataRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PlayersApi#setPlayerData");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
+ **setPlayerDataRequest** | [**SetPlayerDataRequest**](SetPlayerDataRequest.md)|  |
+
+### Return type
+
+[**GetPlayerData200Response**](GetPlayerData200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
