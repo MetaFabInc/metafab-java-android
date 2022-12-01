@@ -1,6 +1,6 @@
 
 
-# GetExchanges200ResponseInner
+# CreateLootboxManager200Response
 
 ## Properties
 
@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **contractId** | **String** | This field has not had a description added. |  [optional]
 **updatedAt** | **String** | This field has not had a description added. |  [optional]
 **createdAt** | **String** | This field has not had a description added. |  [optional]
-**contract** | [**ContractModel**](ContractModel.md) |  |  [optional]
+**contract** | [**CreateCollection200ResponseAllOfContract**](CreateCollection200ResponseAllOfContract.md) |  |  [optional]
 
 
 

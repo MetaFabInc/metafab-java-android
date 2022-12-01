@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timelock** | [**BigDecimal**](BigDecimal.md) | A unix timestamp (in seconds) defining when the set timelock expires. | 
+**timelock** | **Integer** | A unix timestamp (in seconds) defining when the set timelock expires. | 
 
 
 

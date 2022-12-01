@@ -1,6 +1,6 @@
 
 
-# CreateCollectionItemRequestAttributesInnerValue
+# WriteContractRequestArgsInner
 
 ## Properties
 

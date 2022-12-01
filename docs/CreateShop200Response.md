@@ -1,6 +1,6 @@
 
 
-# CreateExchange200Response
+# CreateShop200Response
 
 ## Properties
 

@@ -1,6 +1,6 @@
 
 
-# ExchangeModel
+# ShopModel
 
 ## Properties
 
