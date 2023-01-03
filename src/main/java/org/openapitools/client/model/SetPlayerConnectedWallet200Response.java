@@ -12,21 +12,23 @@
 
 package org.openapitools.client.model;
 
+import org.openapitools.client.model.TransactionModel;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 @ApiModel(description = "")
-public class WalletModel {
+public class SetPlayerConnectedWallet200Response {
   
   @SerializedName("id")
   private String id = null;
   @SerializedName("address")
   private String address = null;
+  @SerializedName("transaction")
+  private TransactionModel transaction = null;
 
   /**
-   * This field has not had a description added.
    **/
-  @ApiModelProperty(value = "This field has not had a description added.")
+  @ApiModelProperty(value = "")
   public String getId() {
     return id;
   }
@@ -35,14 +37,23 @@ public class WalletModel {
   }
 
   /**
-   * This field has not had a description added.
    **/
-  @ApiModelProperty(value = "This field has not had a description added.")
+  @ApiModelProperty(value = "")
   public String getAddress() {
     return address;
   }
   public void setAddress(String address) {
     this.address = address;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public TransactionModel getTransaction() {
+    return transaction;
+  }
+  public void setTransaction(TransactionModel transaction) {
+    this.transaction = transaction;
   }
 
 
@@ -54,9 +65,10 @@ public class WalletModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WalletModel walletModel = (WalletModel) o;
-    return (this.id == null ? walletModel.id == null : this.id.equals(walletModel.id)) &&
-        (this.address == null ? walletModel.address == null : this.address.equals(walletModel.address));
+    SetPlayerConnectedWallet200Response setPlayerConnectedWallet200Response = (SetPlayerConnectedWallet200Response) o;
+    return (this.id == null ? setPlayerConnectedWallet200Response.id == null : this.id.equals(setPlayerConnectedWallet200Response.id)) &&
+        (this.address == null ? setPlayerConnectedWallet200Response.address == null : this.address.equals(setPlayerConnectedWallet200Response.address)) &&
+        (this.transaction == null ? setPlayerConnectedWallet200Response.transaction == null : this.transaction.equals(setPlayerConnectedWallet200Response.transaction));
   }
 
   @Override
@@ -64,16 +76,18 @@ public class WalletModel {
     int result = 17;
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.address == null ? 0: this.address.hashCode());
+    result = 31 * result + (this.transaction == null ? 0: this.transaction.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WalletModel {\n");
+    sb.append("class SetPlayerConnectedWallet200Response {\n");
     
     sb.append("  id: ").append(id).append("\n");
     sb.append("  address: ").append(address).append("\n");
+    sb.append("  transaction: ").append(transaction).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
