@@ -122,7 +122,7 @@ Oftentimes you&#39;ll want to query and retrieve some data from a contract. This
 //import org.metafab.client.api.ContractsApi;
 
 ContractsApi apiInstance = new ContractsApi();
-String contractId = null; // String | Any contract id within the MetaFab ecosystem.
+String contractId = null; // String | Any contract id within the MetaFab platform.
 String func = null; // String | A contract function name. This can be any valid function from the the ABI of the contract you are interacting with. For example, `balanceOf`.
 String args = 123,"Hello",false; // String | A comma seperated list of basic data type arguments. This is optional and only necessary if the function being invoked requires arguments per the contract ABI. For example, `123,\"Hello\",false`.
 try {
@@ -139,7 +139,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **String**| Any contract id within the MetaFab ecosystem. | [default to null]
+ **contractId** | **String**| Any contract id within the MetaFab platform. | [default to null]
  **func** | **String**| A contract function name. This can be any valid function from the the ABI of the contract you are interacting with. For example, &#x60;balanceOf&#x60;. | [default to null]
  **args** | **String**| A comma seperated list of basic data type arguments. This is optional and only necessary if the function being invoked requires arguments per the contract ABI. For example, &#x60;123,\&quot;Hello\&quot;,false&#x60;. | [optional] [default to null]
 
@@ -159,7 +159,7 @@ No authorization required
 
 ## transferContractOwnership
 
-> TransactionModel transferContractOwnership(contractId, xAuthorization, xPassword, transferContractOwnershipRequest)
+> TransactionModel transferContractOwnership(contractId, xAuthorization, xWalletDecryptKey, transferContractOwnershipRequest)
 
 Transfer contract ownership
 
@@ -172,12 +172,12 @@ Transfer ownership and control of a MetaFab deployed smart contract to another w
 //import org.metafab.client.api.ContractsApi;
 
 ContractsApi apiInstance = new ContractsApi();
-String contractId = null; // String | Any contract id within the MetaFab ecosystem.
+String contractId = null; // String | Any contract id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 TransferContractOwnershipRequest transferContractOwnershipRequest = new TransferContractOwnershipRequest(); // TransferContractOwnershipRequest | 
 try {
-    TransactionModel result = apiInstance.transferContractOwnership(contractId, xAuthorization, xPassword, transferContractOwnershipRequest);
+    TransactionModel result = apiInstance.transferContractOwnership(contractId, xAuthorization, xWalletDecryptKey, transferContractOwnershipRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContractsApi#transferContractOwnership");
@@ -190,9 +190,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **String**| Any contract id within the MetaFab ecosystem. | [default to null]
+ **contractId** | **String**| Any contract id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **transferContractOwnershipRequest** | [**TransferContractOwnershipRequest**](TransferContractOwnershipRequest.md)|  |
 
 ### Return type
@@ -211,7 +211,7 @@ No authorization required
 
 ## upgradeContractTrustedForwarder
 
-> TransactionModel upgradeContractTrustedForwarder(contractId, xAuthorization, xPassword, upgradeContractTrustedForwarderRequest)
+> TransactionModel upgradeContractTrustedForwarder(contractId, xAuthorization, xWalletDecryptKey, upgradeContractTrustedForwarderRequest)
 
 Upgrade contract trusted forwarder
 
@@ -224,12 +224,12 @@ In rare circumstances, you may need to upgrade the underlying trusted forwarder 
 //import org.metafab.client.api.ContractsApi;
 
 ContractsApi apiInstance = new ContractsApi();
-String contractId = null; // String | Any contract id within the MetaFab ecosystem.
+String contractId = null; // String | Any contract id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 UpgradeContractTrustedForwarderRequest upgradeContractTrustedForwarderRequest = new UpgradeContractTrustedForwarderRequest(); // UpgradeContractTrustedForwarderRequest | 
 try {
-    TransactionModel result = apiInstance.upgradeContractTrustedForwarder(contractId, xAuthorization, xPassword, upgradeContractTrustedForwarderRequest);
+    TransactionModel result = apiInstance.upgradeContractTrustedForwarder(contractId, xAuthorization, xWalletDecryptKey, upgradeContractTrustedForwarderRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContractsApi#upgradeContractTrustedForwarder");
@@ -242,9 +242,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **String**| Any contract id within the MetaFab ecosystem. | [default to null]
+ **contractId** | **String**| Any contract id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **upgradeContractTrustedForwarderRequest** | [**UpgradeContractTrustedForwarderRequest**](UpgradeContractTrustedForwarderRequest.md)|  |
 
 ### Return type
@@ -263,7 +263,7 @@ No authorization required
 
 ## writeContract
 
-> TransactionModel writeContract(contractId, xAuthorization, xPassword, writeContractRequest)
+> TransactionModel writeContract(contractId, xAuthorization, xWalletDecryptKey, writeContractRequest)
 
 Write contract data
 
@@ -276,12 +276,12 @@ MetaFab&#39;s convenience endpoints for contract interactions may not be flexibl
 //import org.metafab.client.api.ContractsApi;
 
 ContractsApi apiInstance = new ContractsApi();
-String contractId = null; // String | Any contract id within the MetaFab ecosystem.
+String contractId = null; // String | Any contract id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 WriteContractRequest writeContractRequest = new WriteContractRequest(); // WriteContractRequest | 
 try {
-    TransactionModel result = apiInstance.writeContract(contractId, xAuthorization, xPassword, writeContractRequest);
+    TransactionModel result = apiInstance.writeContract(contractId, xAuthorization, xWalletDecryptKey, writeContractRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContractsApi#writeContract");
@@ -294,9 +294,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contractId** | **String**| Any contract id within the MetaFab ecosystem. | [default to null]
+ **contractId** | **String**| Any contract id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **writeContractRequest** | [**WriteContractRequest**](WriteContractRequest.md)|  |
 
 ### Return type

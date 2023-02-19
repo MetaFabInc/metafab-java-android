@@ -114,7 +114,7 @@ Returns a game object for the provided game id.
 //import org.metafab.client.api.GamesApi;
 
 GamesApi apiInstance = new GamesApi();
-String gameId = null; // String | Any game id within the MetaFab ecosystem.
+String gameId = null; // String | Any game id within the MetaFab platform.
 try {
     PublicGame result = apiInstance.getGame(gameId);
     System.out.println(result);
@@ -129,7 +129,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **gameId** | **String**| Any game id within the MetaFab ecosystem. | [default to null]
+ **gameId** | **String**| Any game id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -147,7 +147,7 @@ No authorization required
 
 ## updateGame
 
-> GameModel updateGame(gameId, xAuthorization, updateGameRequest)
+> UpdateGame200Response updateGame(gameId, xAuthorization, updateGameRequest)
 
 Update game
 
@@ -160,11 +160,11 @@ Update various fields specific to a game. Such as changing its password, resetti
 //import org.metafab.client.api.GamesApi;
 
 GamesApi apiInstance = new GamesApi();
-String gameId = null; // String | Any game id within the MetaFab ecosystem.
+String gameId = null; // String | The game id of the authenticating game.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
 UpdateGameRequest updateGameRequest = new UpdateGameRequest(); // UpdateGameRequest | 
 try {
-    GameModel result = apiInstance.updateGame(gameId, xAuthorization, updateGameRequest);
+    UpdateGame200Response result = apiInstance.updateGame(gameId, xAuthorization, updateGameRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GamesApi#updateGame");
@@ -177,13 +177,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **gameId** | **String**| Any game id within the MetaFab ecosystem. | [default to null]
+ **gameId** | **String**| The game id of the authenticating game. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
  **updateGameRequest** | [**UpdateGameRequest**](UpdateGameRequest.md)|  |
 
 ### Return type
 
-[**GameModel**](GameModel.md)
+[**UpdateGame200Response**](UpdateGame200Response.md)
 
 ### Authorization
 

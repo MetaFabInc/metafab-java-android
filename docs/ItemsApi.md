@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 ## batchMintCollectionItems
 
-> TransactionModel batchMintCollectionItems(collectionId, xAuthorization, xPassword, batchMintCollectionItemsRequest)
+> TransactionModel batchMintCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchMintCollectionItemsRequest)
 
 Batch mint collection items
 
@@ -43,12 +43,12 @@ Creates (mints) the provided itemIds of the specified quantities to the provided
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 BatchMintCollectionItemsRequest batchMintCollectionItemsRequest = new BatchMintCollectionItemsRequest(); // BatchMintCollectionItemsRequest | 
 try {
-    TransactionModel result = apiInstance.batchMintCollectionItems(collectionId, xAuthorization, xPassword, batchMintCollectionItemsRequest);
+    TransactionModel result = apiInstance.batchMintCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchMintCollectionItemsRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#batchMintCollectionItems");
@@ -61,9 +61,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **batchMintCollectionItemsRequest** | [**BatchMintCollectionItemsRequest**](BatchMintCollectionItemsRequest.md)|  |
 
 ### Return type
@@ -82,7 +82,7 @@ No authorization required
 
 ## batchTransferCollectionItems
 
-> TransactionModel batchTransferCollectionItems(collectionId, xAuthorization, xPassword, batchTransferCollectionItemsRequest)
+> TransactionModel batchTransferCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchTransferCollectionItemsRequest)
 
 Batch transfer collection items
 
@@ -95,12 +95,12 @@ Transfers one or multiple items of specified quantities to the provided wallet a
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 BatchTransferCollectionItemsRequest batchTransferCollectionItemsRequest = new BatchTransferCollectionItemsRequest(); // BatchTransferCollectionItemsRequest | 
 try {
-    TransactionModel result = apiInstance.batchTransferCollectionItems(collectionId, xAuthorization, xPassword, batchTransferCollectionItemsRequest);
+    TransactionModel result = apiInstance.batchTransferCollectionItems(collectionId, xAuthorization, xWalletDecryptKey, batchTransferCollectionItemsRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#batchTransferCollectionItems");
@@ -113,9 +113,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **batchTransferCollectionItemsRequest** | [**BatchTransferCollectionItemsRequest**](BatchTransferCollectionItemsRequest.md)|  |
 
 ### Return type
@@ -134,7 +134,7 @@ No authorization required
 
 ## burnCollectionItem
 
-> TransactionModel burnCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, burnCollectionItemRequest)
+> TransactionModel burnCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, burnCollectionItemRequest)
 
 Burn collection item
 
@@ -147,13 +147,13 @@ Removes (burns) the provided quantity of the collectionItemId from the authentic
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 BurnCollectionItemRequest burnCollectionItemRequest = new BurnCollectionItemRequest(); // BurnCollectionItemRequest | 
 try {
-    TransactionModel result = apiInstance.burnCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, burnCollectionItemRequest);
+    TransactionModel result = apiInstance.burnCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, burnCollectionItemRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#burnCollectionItem");
@@ -166,10 +166,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **burnCollectionItemRequest** | [**BurnCollectionItemRequest**](BurnCollectionItemRequest.md)|  |
 
 ### Return type
@@ -188,7 +188,7 @@ No authorization required
 
 ## createCollection
 
-> CreateCollection200Response createCollection(xAuthorization, xPassword, createCollectionRequest)
+> CreateCollection200Response createCollection(xAuthorization, xWalletDecryptKey, createCollectionRequest)
 
 Create collection
 
@@ -202,10 +202,10 @@ Creates a new game item collection and deploys an extended functionality ERC1155
 
 ItemsApi apiInstance = new ItemsApi();
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 CreateCollectionRequest createCollectionRequest = new CreateCollectionRequest(); // CreateCollectionRequest | 
 try {
-    CreateCollection200Response result = apiInstance.createCollection(xAuthorization, xPassword, createCollectionRequest);
+    CreateCollection200Response result = apiInstance.createCollection(xAuthorization, xWalletDecryptKey, createCollectionRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#createCollection");
@@ -219,7 +219,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **createCollectionRequest** | [**CreateCollectionRequest**](CreateCollectionRequest.md)|  |
 
 ### Return type
@@ -238,7 +238,7 @@ No authorization required
 
 ## createCollectionItem
 
-> TransactionModel createCollectionItem(collectionId, xAuthorization, xPassword, createCollectionItemRequest)
+> TransactionModel createCollectionItem(collectionId, xAuthorization, xWalletDecryptKey, createCollectionItemRequest)
 
 Create collection item
 
@@ -251,12 +251,12 @@ Creates a new item type. Item type creation associates all of the relevant item 
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 CreateCollectionItemRequest createCollectionItemRequest = new CreateCollectionItemRequest(); // CreateCollectionItemRequest | 
 try {
-    TransactionModel result = apiInstance.createCollectionItem(collectionId, xAuthorization, xPassword, createCollectionItemRequest);
+    TransactionModel result = apiInstance.createCollectionItem(collectionId, xAuthorization, xWalletDecryptKey, createCollectionItemRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#createCollectionItem");
@@ -269,9 +269,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **createCollectionItemRequest** | [**CreateCollectionItemRequest**](CreateCollectionItemRequest.md)|  |
 
 ### Return type
@@ -303,10 +303,10 @@ Returns a boolean (true/false) representing if the provided operatorAddress has 
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String operatorAddress = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
-String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+String walletId = null; // String | Any wallet id within the MetaFab platform.
 try {
     Boolean result = apiInstance.getCollectionApproval(collectionId, operatorAddress, address, walletId);
     System.out.println(result);
@@ -321,10 +321,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **operatorAddress** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [default to null]
  **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
- **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab platform. | [optional] [default to null]
 
 ### Return type
 
@@ -342,7 +342,7 @@ No authorization required
 
 ## getCollectionItem
 
-> Object getCollectionItem(collectionId, collectionItemId)
+> CollectionItem getCollectionItem(collectionId, collectionItemId)
 
 Get collection item
 
@@ -355,10 +355,10 @@ Returns a metadata object for the provided collectionItemId.
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 try {
-    Object result = apiInstance.getCollectionItem(collectionId, collectionItemId);
+    CollectionItem result = apiInstance.getCollectionItem(collectionId, collectionItemId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#getCollectionItem");
@@ -371,12 +371,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
 
 ### Return type
 
-**Object**
+[**CollectionItem**](CollectionItem.md)
 
 ### Authorization
 
@@ -403,10 +403,10 @@ Returns the current collection item balance of the provided collectionItemId for
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
-String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+String walletId = null; // String | Any wallet id within the MetaFab platform.
 try {
     Integer result = apiInstance.getCollectionItemBalance(collectionId, collectionItemId, address, walletId);
     System.out.println(result);
@@ -421,10 +421,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
- **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab platform. | [optional] [default to null]
 
 ### Return type
 
@@ -455,9 +455,9 @@ Returns the current collection item balances of all collection items for the pro
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
-String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+String walletId = null; // String | Any wallet id within the MetaFab platform.
 try {
     Map<String, Integer> result = apiInstance.getCollectionItemBalances(collectionId, address, walletId);
     System.out.println(result);
@@ -472,9 +472,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
- **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab platform. | [optional] [default to null]
 
 ### Return type
 
@@ -505,7 +505,7 @@ Returns the currency circulating supply of all collection items.
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 try {
     Map<String, Integer> result = apiInstance.getCollectionItemSupplies(collectionId);
     System.out.println(result);
@@ -520,7 +520,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -551,10 +551,10 @@ Returns the current circulating supply of the provided collectionItemId.
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
-String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+String walletId = null; // String | Any wallet id within the MetaFab platform.
 try {
     Integer result = apiInstance.getCollectionItemSupply(collectionId, collectionItemId, address, walletId);
     System.out.println(result);
@@ -569,10 +569,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
- **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab platform. | [optional] [default to null]
 
 ### Return type
 
@@ -603,7 +603,7 @@ Returns a timestamp (in seconds) for when the provided collectionItemId&#39;s tr
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 try {
     Integer result = apiInstance.getCollectionItemTimelock(collectionId, collectionItemId);
@@ -619,7 +619,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
 
 ### Return type
@@ -638,7 +638,7 @@ No authorization required
 
 ## getCollectionItems
 
-> List&lt;Object&gt; getCollectionItems(collectionId)
+> List&lt;CollectionItem&gt; getCollectionItems(collectionId)
 
 Get collection items
 
@@ -651,9 +651,9 @@ Returns all collection items as an array of metadata objects.
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 try {
-    List<Object> result = apiInstance.getCollectionItems(collectionId);
+    List<CollectionItem> result = apiInstance.getCollectionItems(collectionId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#getCollectionItems");
@@ -666,11 +666,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
 
 ### Return type
 
-**List&lt;Object&gt;**
+[**List&lt;CollectionItem&gt;**](CollectionItem.md)
 
 ### Authorization
 
@@ -697,10 +697,10 @@ Returns a boolean (true/false) representing if the provided role for this collec
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String role = minter; // String | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
 String address = 0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D; // String | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
-String walletId = null; // String | Any wallet id within the MetaFab ecosystem.
+String walletId = null; // String | Any wallet id within the MetaFab platform.
 try {
     Boolean result = apiInstance.getCollectionRole(collectionId, role, address, walletId);
     System.out.println(result);
@@ -715,10 +715,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **role** | **String**| A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | [default to null]
  **address** | **String**| A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] [default to null]
- **walletId** | **String**| Any wallet id within the MetaFab ecosystem. | [optional] [default to null]
+ **walletId** | **String**| Any wallet id within the MetaFab platform. | [optional] [default to null]
 
 ### Return type
 
@@ -782,7 +782,7 @@ No authorization required
 
 ## grantCollectionRole
 
-> TransactionModel grantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest)
+> TransactionModel grantCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, grantCollectionRoleRequest)
 
 Grant collection role
 
@@ -795,12 +795,12 @@ Grants the provided role for the collection to the provided address or address a
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 GrantCollectionRoleRequest grantCollectionRoleRequest = new GrantCollectionRoleRequest(); // GrantCollectionRoleRequest | 
 try {
-    TransactionModel result = apiInstance.grantCollectionRole(collectionId, xAuthorization, xPassword, grantCollectionRoleRequest);
+    TransactionModel result = apiInstance.grantCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, grantCollectionRoleRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#grantCollectionRole");
@@ -813,9 +813,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **grantCollectionRoleRequest** | [**GrantCollectionRoleRequest**](GrantCollectionRoleRequest.md)|  |
 
 ### Return type
@@ -834,7 +834,7 @@ No authorization required
 
 ## mintCollectionItem
 
-> TransactionModel mintCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, mintCollectionItemRequest)
+> TransactionModel mintCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, mintCollectionItemRequest)
 
 Mint collection item
 
@@ -847,13 +847,13 @@ Creates (mints) the specified quantity of the provided collectionItemId to the p
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 MintCollectionItemRequest mintCollectionItemRequest = new MintCollectionItemRequest(); // MintCollectionItemRequest | 
 try {
-    TransactionModel result = apiInstance.mintCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, mintCollectionItemRequest);
+    TransactionModel result = apiInstance.mintCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, mintCollectionItemRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#mintCollectionItem");
@@ -866,10 +866,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **mintCollectionItemRequest** | [**MintCollectionItemRequest**](MintCollectionItemRequest.md)|  |
 
 ### Return type
@@ -888,7 +888,7 @@ No authorization required
 
 ## revokeCollectionRole
 
-> TransactionModel revokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest)
+> TransactionModel revokeCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, revokeCollectionRoleRequest)
 
 Revoke collection role
 
@@ -901,12 +901,12 @@ Revokes the provided role for the collection to the provided address or address 
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 RevokeCollectionRoleRequest revokeCollectionRoleRequest = new RevokeCollectionRoleRequest(); // RevokeCollectionRoleRequest | 
 try {
-    TransactionModel result = apiInstance.revokeCollectionRole(collectionId, xAuthorization, xPassword, revokeCollectionRoleRequest);
+    TransactionModel result = apiInstance.revokeCollectionRole(collectionId, xAuthorization, xWalletDecryptKey, revokeCollectionRoleRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#revokeCollectionRole");
@@ -919,9 +919,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md)|  |
 
 ### Return type
@@ -940,7 +940,7 @@ No authorization required
 
 ## setCollectionApproval
 
-> TransactionModel setCollectionApproval(collectionId, xAuthorization, xPassword, setCollectionApprovalRequest)
+> TransactionModel setCollectionApproval(collectionId, xAuthorization, xWalletDecryptKey, setCollectionApprovalRequest)
 
 Set collection approval
 
@@ -953,12 +953,12 @@ Sets approval for the provided address or wallet address associated with the pro
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 SetCollectionApprovalRequest setCollectionApprovalRequest = new SetCollectionApprovalRequest(); // SetCollectionApprovalRequest | 
 try {
-    TransactionModel result = apiInstance.setCollectionApproval(collectionId, xAuthorization, xPassword, setCollectionApprovalRequest);
+    TransactionModel result = apiInstance.setCollectionApproval(collectionId, xAuthorization, xWalletDecryptKey, setCollectionApprovalRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#setCollectionApproval");
@@ -971,9 +971,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **setCollectionApprovalRequest** | [**SetCollectionApprovalRequest**](SetCollectionApprovalRequest.md)|  |
 
 ### Return type
@@ -992,7 +992,7 @@ No authorization required
 
 ## setCollectionItemTimelock
 
-> TransactionModel setCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xPassword, setCollectionItemTimelockRequest)
+> TransactionModel setCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, setCollectionItemTimelockRequest)
 
 Set collection item timelock
 
@@ -1005,13 +1005,13 @@ Sets the item timelock for the provided collection itemId. The timelock is a uni
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 SetCollectionItemTimelockRequest setCollectionItemTimelockRequest = new SetCollectionItemTimelockRequest(); // SetCollectionItemTimelockRequest | 
 try {
-    TransactionModel result = apiInstance.setCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xPassword, setCollectionItemTimelockRequest);
+    TransactionModel result = apiInstance.setCollectionItemTimelock(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, setCollectionItemTimelockRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#setCollectionItemTimelock");
@@ -1024,10 +1024,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **setCollectionItemTimelockRequest** | [**SetCollectionItemTimelockRequest**](SetCollectionItemTimelockRequest.md)|  |
 
 ### Return type
@@ -1046,7 +1046,7 @@ No authorization required
 
 ## transferCollectionItem
 
-> TransactionModel transferCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, transferCollectionItemRequest)
+> TransactionModel transferCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, transferCollectionItemRequest)
 
 Transfer collection item
 
@@ -1059,13 +1059,13 @@ Transfers specified quantity of itemId to the provided wallet address or wallet 
 //import org.metafab.client.api.ItemsApi;
 
 ItemsApi apiInstance = new ItemsApi();
-String collectionId = null; // String | Any collection id within the MetaFab ecosystem.
+String collectionId = null; // String | Any collection id within the MetaFab platform.
 BigDecimal collectionItemId = null; // BigDecimal | Any item id for the collection. Zero, or a positive integer.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 TransferCollectionItemRequest transferCollectionItemRequest = new TransferCollectionItemRequest(); // TransferCollectionItemRequest | 
 try {
-    TransactionModel result = apiInstance.transferCollectionItem(collectionId, collectionItemId, xAuthorization, xPassword, transferCollectionItemRequest);
+    TransactionModel result = apiInstance.transferCollectionItem(collectionId, collectionItemId, xAuthorization, xWalletDecryptKey, transferCollectionItemRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ItemsApi#transferCollectionItem");
@@ -1078,10 +1078,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **String**| Any collection id within the MetaFab ecosystem. | [default to null]
+ **collectionId** | **String**| Any collection id within the MetaFab platform. | [default to null]
  **collectionItemId** | **BigDecimal**| Any item id for the collection. Zero, or a positive integer. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
  **transferCollectionItemRequest** | [**TransferCollectionItemRequest**](TransferCollectionItemRequest.md)|  |
 
 ### Return type

@@ -23,7 +23,7 @@ Returns an executed transaction object for the provided transactionId. Transacti
 //import org.metafab.client.api.TransactionsApi;
 
 TransactionsApi apiInstance = new TransactionsApi();
-String transactionId = null; // String | Any transaction id within the MetaFab ecosystem.
+String transactionId = null; // String | Any transaction id within the MetaFab platform.
 try {
     TransactionModel result = apiInstance.getTransaction(transactionId);
     System.out.println(result);
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Any transaction id within the MetaFab ecosystem. | [default to null]
+ **transactionId** | **String**| Any transaction id within the MetaFab platform. | [default to null]
 
 ### Return type
 

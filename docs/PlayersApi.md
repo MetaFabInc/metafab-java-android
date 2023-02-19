@@ -125,7 +125,7 @@ Returns a player object for the provided player id.
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String playerId = null; // String | Any player id within the MetaFab platform.
 try {
     PublicPlayer result = apiInstance.getPlayer(playerId);
     System.out.println(result);
@@ -140,7 +140,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| Any player id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -171,7 +171,7 @@ Returns the latest public and protected data as an object for the provided playe
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String playerId = null; // String | Any player id within the MetaFab platform.
 try {
     GetPlayerData200Response result = apiInstance.getPlayerData(playerId);
     System.out.println(result);
@@ -186,7 +186,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| Any player id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -263,8 +263,8 @@ Removes an external wallet from a player account. The player&#39;s wallet is rev
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
-String playerWalletId = null; // String | Any player wallet id within the MetaFab ecosystem.
+String playerId = null; // String | Any player id within the MetaFab platform.
+String playerWalletId = null; // String | Any player wallet id within the MetaFab platform.
 RemovePlayerConnectedWalletRequest removePlayerConnectedWalletRequest = new RemovePlayerConnectedWalletRequest(); // RemovePlayerConnectedWalletRequest | 
 try {
     apiInstance.removePlayerConnectedWallet(playerId, playerWalletId, removePlayerConnectedWalletRequest);
@@ -279,8 +279,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
- **playerWalletId** | **String**| Any player wallet id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| Any player id within the MetaFab platform. | [default to null]
+ **playerWalletId** | **String**| Any player wallet id within the MetaFab platform. | [default to null]
  **removePlayerConnectedWalletRequest** | [**RemovePlayerConnectedWalletRequest**](RemovePlayerConnectedWalletRequest.md)|  |
 
 ### Return type
@@ -312,7 +312,7 @@ Sets an external wallet as the wallet for a player account. The set wallet can t
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String playerId = null; // String | The player id of the authenticating player.
 String xAuthorization = player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `accessToken` of the authenticating player.
 SetPlayerConnectedWalletRequest setPlayerConnectedWalletRequest = new SetPlayerConnectedWalletRequest(); // SetPlayerConnectedWalletRequest | 
 try {
@@ -329,7 +329,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| The player id of the authenticating player. | [default to null]
  **xAuthorization** | **String**| The &#x60;accessToken&#x60; of the authenticating player. | [default to null]
  **setPlayerConnectedWalletRequest** | [**SetPlayerConnectedWalletRequest**](SetPlayerConnectedWalletRequest.md)|  |
 
@@ -362,7 +362,7 @@ Creates or updates public and/or protected data for the provided playerId. Data 
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String playerId = null; // String | Any player id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
 SetPlayerDataRequest setPlayerDataRequest = new SetPlayerDataRequest(); // SetPlayerDataRequest | 
 try {
@@ -379,7 +379,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| Any player id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
  **setPlayerDataRequest** | [**SetPlayerDataRequest**](SetPlayerDataRequest.md)|  |
 
@@ -399,7 +399,7 @@ No authorization required
 
 ## updatePlayer
 
-> PlayerModel updatePlayer(playerId, xAuthorization, updatePlayerRequest)
+> UpdatePlayer200Response updatePlayer(playerId, xAuthorization, updatePlayerRequest)
 
 Update player
 
@@ -412,11 +412,11 @@ Update various fields specific to a player. Such as changing its password and re
 //import org.metafab.client.api.PlayersApi;
 
 PlayersApi apiInstance = new PlayersApi();
-String playerId = null; // String | Any player id within the MetaFab ecosystem.
+String playerId = null; // String | The player id of the authenticating player.
 String xAuthorization = player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `accessToken` of the authenticating player.
 UpdatePlayerRequest updatePlayerRequest = new UpdatePlayerRequest(); // UpdatePlayerRequest | 
 try {
-    PlayerModel result = apiInstance.updatePlayer(playerId, xAuthorization, updatePlayerRequest);
+    UpdatePlayer200Response result = apiInstance.updatePlayer(playerId, xAuthorization, updatePlayerRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PlayersApi#updatePlayer");
@@ -429,13 +429,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerId** | **String**| Any player id within the MetaFab ecosystem. | [default to null]
+ **playerId** | **String**| The player id of the authenticating player. | [default to null]
  **xAuthorization** | **String**| The &#x60;accessToken&#x60; of the authenticating player. | [default to null]
  **updatePlayerRequest** | [**UpdatePlayerRequest**](UpdatePlayerRequest.md)|  |
 
 ### Return type
 
-[**PlayerModel**](PlayerModel.md)
+[**UpdatePlayer200Response**](UpdatePlayer200Response.md)
 
 ### Authorization
 

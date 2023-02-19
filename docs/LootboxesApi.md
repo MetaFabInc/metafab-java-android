@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## createLootboxManager
 
-> CreateLootboxManager200Response createLootboxManager(xAuthorization, xPassword, createLootboxManagerRequest)
+> CreateLootboxManager200Response createLootboxManager(xAuthorization, xWalletDecryptKey, createLootboxManagerRequest)
 
 Create lootbox manager
 
@@ -30,10 +30,10 @@ Creates a new game lootbox manager and deploys a lootbox manager contract on beh
 
 LootboxesApi apiInstance = new LootboxesApi();
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 CreateLootboxManagerRequest createLootboxManagerRequest = new CreateLootboxManagerRequest(); // CreateLootboxManagerRequest | 
 try {
-    CreateLootboxManager200Response result = apiInstance.createLootboxManager(xAuthorization, xPassword, createLootboxManagerRequest);
+    CreateLootboxManager200Response result = apiInstance.createLootboxManager(xAuthorization, xWalletDecryptKey, createLootboxManagerRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LootboxesApi#createLootboxManager");
@@ -47,7 +47,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **createLootboxManagerRequest** | [**CreateLootboxManagerRequest**](CreateLootboxManagerRequest.md)|  |
 
 ### Return type
@@ -79,8 +79,8 @@ Returns a lootbox manager lootbox object for the provided lootboxManagerLootboxI
 //import org.metafab.client.api.LootboxesApi;
 
 LootboxesApi apiInstance = new LootboxesApi();
-String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab ecosystem.
-String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab ecosystem.
+String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab platform.
+String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab platform.
 try {
     LootboxManagerLootbox result = apiInstance.getLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId);
     System.out.println(result);
@@ -95,8 +95,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab ecosystem. | [default to null]
- **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab ecosystem. | [default to null]
+ **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab platform. | [default to null]
+ **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -127,7 +127,7 @@ Returns all lootbox manager lootboxes as an array of lootbox objects.
 //import org.metafab.client.api.LootboxesApi;
 
 LootboxesApi apiInstance = new LootboxesApi();
-String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab ecosystem.
+String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab platform.
 try {
     List<LootboxManagerLootbox> result = apiInstance.getLootboxManagerLootboxes(lootboxManagerId);
     System.out.println(result);
@@ -142,7 +142,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab ecosystem. | [default to null]
+ **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab platform. | [default to null]
 
 ### Return type
 
@@ -206,7 +206,7 @@ No authorization required
 
 ## openLootboxManagerLootbox
 
-> List&lt;TransactionModel&gt; openLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword)
+> List&lt;TransactionModel&gt; openLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey)
 
 Open lootbox manager lootbox
 
@@ -219,12 +219,12 @@ Opens a lootbox manager lootbox. The required input item(s) are burned from the 
 //import org.metafab.client.api.LootboxesApi;
 
 LootboxesApi apiInstance = new LootboxesApi();
-String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab ecosystem.
-String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab ecosystem.
+String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab platform.
+String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab platform.
 String xAuthorization = ["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]; // String | The `secretKey` of a specific game or the `accessToken` of a specific player.
-String xPassword = mySecurePassword; // String | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 try {
-    List<TransactionModel> result = apiInstance.openLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword);
+    List<TransactionModel> result = apiInstance.openLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LootboxesApi#openLootboxManagerLootbox");
@@ -237,10 +237,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab ecosystem. | [default to null]
- **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab ecosystem. | [default to null]
+ **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab platform. | [default to null]
+ **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | [default to null]
- **xPassword** | **String**| The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | [default to null]
 
 ### Return type
 
@@ -258,7 +258,7 @@ No authorization required
 
 ## removeLootboxManagerLootbox
 
-> TransactionModel removeLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword)
+> TransactionModel removeLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey)
 
 Remove lootbox manager lootbox
 
@@ -271,12 +271,12 @@ Removes the provided lootbox by lootboxId from the provided lootbox manager. Rem
 //import org.metafab.client.api.LootboxesApi;
 
 LootboxesApi apiInstance = new LootboxesApi();
-String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab ecosystem.
-String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab ecosystem.
+String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab platform.
+String lootboxManagerLootboxId = null; // String | Any lootbox manager lootbox id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 try {
-    TransactionModel result = apiInstance.removeLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xPassword);
+    TransactionModel result = apiInstance.removeLootboxManagerLootbox(lootboxManagerId, lootboxManagerLootboxId, xAuthorization, xWalletDecryptKey);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LootboxesApi#removeLootboxManagerLootbox");
@@ -289,10 +289,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab ecosystem. | [default to null]
- **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab ecosystem. | [default to null]
+ **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab platform. | [default to null]
+ **lootboxManagerLootboxId** | **String**| Any lootbox manager lootbox id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
 
 ### Return type
 
@@ -310,7 +310,7 @@ No authorization required
 
 ## setLootboxManagerLootbox
 
-> TransactionModel setLootboxManagerLootbox(lootboxManagerId, xAuthorization, xPassword, setLootboxManagerLootboxRequest)
+> TransactionModel setLootboxManagerLootbox(lootboxManagerId, xAuthorization, xWalletDecryptKey, setLootboxManagerLootboxRequest)
 
 Set lootbox manager lootbox
 
@@ -323,12 +323,12 @@ Sets a new lootbox manager lootbox or updates an existing one for the provided i
 //import org.metafab.client.api.LootboxesApi;
 
 LootboxesApi apiInstance = new LootboxesApi();
-String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab ecosystem.
+String lootboxManagerId = null; // String | Any lootbox manager id within the MetaFab platform.
 String xAuthorization = game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP; // String | The `secretKey` of the authenticating game.
-String xPassword = mySecurePassword; // String | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+String xWalletDecryptKey = AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=; // String | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 SetLootboxManagerLootboxRequest setLootboxManagerLootboxRequest = new SetLootboxManagerLootboxRequest(); // SetLootboxManagerLootboxRequest | 
 try {
-    TransactionModel result = apiInstance.setLootboxManagerLootbox(lootboxManagerId, xAuthorization, xPassword, setLootboxManagerLootboxRequest);
+    TransactionModel result = apiInstance.setLootboxManagerLootbox(lootboxManagerId, xAuthorization, xWalletDecryptKey, setLootboxManagerLootboxRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LootboxesApi#setLootboxManagerLootbox");
@@ -341,9 +341,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab ecosystem. | [default to null]
+ **lootboxManagerId** | **String**| Any lootbox manager id within the MetaFab platform. | [default to null]
  **xAuthorization** | **String**| The &#x60;secretKey&#x60; of the authenticating game. | [default to null]
- **xPassword** | **String**| The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
+ **xWalletDecryptKey** | **String**| The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | [default to null]
  **setLootboxManagerLootboxRequest** | [**SetLootboxManagerLootboxRequest**](SetLootboxManagerLootboxRequest.md)|  |
 
 ### Return type
